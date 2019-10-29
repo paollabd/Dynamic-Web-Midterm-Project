@@ -1,0 +1,27 @@
+.marsPic{
+	height: 100%;
+	margin-left: 25%;
+	margin-right: auto;
+	width: 50%;
+}
+
+.Card{
+	background-color: rgb(225, 225, 225);
+	border-radius: 8px;
+	height: 100px;
+	margin-right: auto;
+	margin-top: 40%;
+	opacity: 0.6;
+	padding: 10px;
+	position: absolute;
+	font-size: 10pt;
+	width: 100px;
+}
+
+.infoCard{
+	margin-left: 26%;
+}
+
+.roverCard{
+	margin-left: 37%;
+}

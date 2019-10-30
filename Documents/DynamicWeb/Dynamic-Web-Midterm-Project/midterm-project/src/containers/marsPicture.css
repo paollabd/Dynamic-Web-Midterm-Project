@@ -7,21 +7,20 @@ body{
 	float: left;
 	justify-content: space-between;
 	flex-wrap: wrap;
-	margin-left: 160px;
+	margin-left: 100px;
 }
 
 .container_item{
 	background-color: rgb(225, 225, 225);
 	border-radius: 8px;
 	font-size: 10pt;
-	height: 100px;
+	height: 130px;
 	margin-left: 20px;
 	margin-top: 560px;
 	opacity: 0.7;
-	padding: 10px;
 	position: relative;
 	text-align: center;
-	width: 100px;
+	width: 150px;
 	z-index: 2;
 }
 

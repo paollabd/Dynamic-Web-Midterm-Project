@@ -58,8 +58,7 @@ export default function Home(props) {
 
 			<div className="weather">
 				<div class="overlay2 overlayFade2">
-					<p>Sol: {marsWeather.data && marsWeather.data.sol_keys[0]}</p>
-					<p>Temp: {temperature}</p>
+		
 				</div>
 			</div>
 

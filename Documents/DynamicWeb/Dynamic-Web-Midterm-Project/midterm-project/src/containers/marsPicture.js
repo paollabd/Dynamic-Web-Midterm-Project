@@ -12,6 +12,7 @@ export default function Pic(props) {
 	const [date, setDate] = useState(''); // creating date variable
 	const [marsData, setMarsData] = useState({});
 	const [marsWeather, setMarsWeather] = useState({});
+	const [title, setTitle] = useState('')
 
 	function queryMarsImgAPI(queryDate) {
 		axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${queryDate}&api_key=${apiKey}`) // API address
@@ -52,11 +53,8 @@ export default function Pic(props) {
 		});
 	}	
 
-	var solNum = marsWeather.data && marsWeather.data.sol_keys[0];
-	var solObject = marsWeather.data && marsWeather.data[0];
-    var featuredSol = marsWeather.data && marsWeather.data.sol_keys[marsWeather.data.sol_keys.length - 1];
-    var featuredSolObject = marsWeather.data && marsWeather.data[featuredSol];
-    var solObjectAT = marsWeather.data && marsWeather.data.sol_keys[0] && marsWeather.data.sol_keys[0]['AT'] && marsWeather.data.sol_keys[0]['AT']['av'];
+    var temp = marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[0]] && marsWeather.data[322]['AT'].av
+    console.log('DATA', marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[0]] && marsWeather.data[322]['AT'].av)
 
     const minDay = 1;
     const maxDay = 30;
@@ -76,6 +74,7 @@ export default function Pic(props) {
 				<h3>Using NASA's InSight API, I was able to pull daily weather measurements from mars, and 
 				using the Mars Rover Photos API, I was able to pull images taken form rovers in mars.
 				To see more information about these rovers, hover over the image.</h3>
+				<h4>Sol {marsWeather.data && marsWeather.data.sol_keys[0]}</h4>
 			</div>
 			<div className="picture">
 				<img className="marsPic" src={marsData.data && marsData.data.photos[0].img_src} />
@@ -85,22 +84,39 @@ export default function Pic(props) {
 						<p>Sol: {marsData.data && marsData.data.photos[0].sol}</p>
 						<p>Rover name: {marsData.data && marsData.data.photos[0].rover.name}</p>
 						<p>Landing Date: {marsData.data && marsData.data.photos[0].rover.landing_date}</p>
+						<form>
+							<h3>Day of Picture:</h3>
+							<p>Enter date in YYYY-MM-DD format:</p>
+							<input onChange={event => setTitle(event.target.value)} />
+						</form>
+						<a className={`WeatherNav__Item ${date === {title} ? 'WeatherNav__Item--active' : ''}`} href="/?earth_date=${title}">Set Date</a>
 					</div>
 				</div> 
 			</div> 
 			<div class="container">
 				<div class="container_item">
 					<p>Sol: {marsWeather.data && marsWeather.data.sol_keys[0]}</p>
-					<p>Temp: {solObjectAT}</p>
+					<p>Temp: {marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[0]] && marsWeather.data[322]['AT'].av} °F</p>
+					<p>Min: {marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[0]] && marsWeather.data[322]['AT'].mn} °F</p>
+					<p>Max: {marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[0]] && marsWeather.data[322]['AT'].mx} °F</p>
 				</div>
 				<div class="container_item">
 					<p>Sol: {marsWeather.data && marsWeather.data.sol_keys[1]}</p>
+					<p>Temp: {marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[1]] && marsWeather.data[322]['AT'].av} °F</p>
+					<p>Min: {marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[1]] && marsWeather.data[322]['AT'].mn} °F</p>
+					<p>Max: {marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[1]] && marsWeather.data[322]['AT'].mx} °F</p>
 				</div>
 				<div class="container_item">
 					<p>Sol: {marsWeather.data && marsWeather.data.sol_keys[2]}</p>
+					<p>Temp: {marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[2]] && marsWeather.data[322]['AT'].av} °F</p>
+					<p>Min: {marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[2]] && marsWeather.data[322]['AT'].mn} °F</p>
+					<p>Max: {marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[2]] && marsWeather.data[322]['AT'].mx} °F</p>
 				</div>
 				<div class="container_item">
 					<p>Sol: {marsWeather.data && marsWeather.data.sol_keys[3]}</p>
+					<p>Temp: {marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[3]] && marsWeather.data[322]['AT'].av} °F</p>
+					<p>Min: {marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[3]] && marsWeather.data[322]['AT'].mn} °F</p>
+					<p>Max: {marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[3]] && marsWeather.data[322]['AT'].mx} °F</p>
 				</div>
 			</div>
 		</div>

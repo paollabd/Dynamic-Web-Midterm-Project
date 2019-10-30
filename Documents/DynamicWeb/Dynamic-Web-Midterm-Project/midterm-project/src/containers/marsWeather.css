@@ -2,8 +2,38 @@
 * @Author: Paolla
 * @Date:   2019-10-29 14:42:52
 * @Last Modified by:   Paolla
-* @Last Modified time: 2019-10-29 14:54:23
+* @Last Modified time: 2019-10-29 21:31:04
 */
-.sol{
-	color: red;
+/*.sol{
+	background-color: white;
+	opacity: 1;
 }
+
+.overlay2{
+	background-color: purple;
+	opacity: 1;
+	position: absolute;
+	transition: all 0.3s ease;
+}
+
+
+.overlayFade2{
+	background-color: #525251b0;
+	color: white;
+	height: 100%;
+	left: 0;
+	top: 0;
+	width: 100%;
+}
+
+.weather{
+	display: inline-block;
+	height: 200px;
+	margin-left: 20px;
+	position: relative;
+	width: 200px;
+}
+
+.weather:hover .overlay{
+	opacity: 0;
+}*/

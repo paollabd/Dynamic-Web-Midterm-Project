@@ -29,29 +29,38 @@ export default function Home(props) {
 			return error;		
 		});
 	}
-	
-	useEffect(() => {
-		console.log('weather test', queryMarsWeatherAPI());
-	}, []);
 
+	var temperature = sol && sol.curr_sol;
 	var sol = {};
 	sol['curr_sol'] = marsWeather.data && marsWeather.data.sol_keys[0];
 	console.log('temp test', sol.curr_sol);
 
-	let temperature = sol && sol.curr_sol && sol.curr_sol.AT && sol.curr_sol.AT.av
-	console.log('sol', sol);
-	console.log('sol.curr_sol', sol.curr_sol);
-	console.log('sol.curr_sol.AT', sol.curr_sol.AT);
-	console.log('sol.curr_sol.AT.av', sol.curr_sol.AT.av);
+	function test(t) {      //defining a function
+	  if (t === undefined) {       //if t=undefined, call tt
+	        console.log(t)      //call t
+	  }
+	  return t;    
+	}
+
+	useEffect(() => {
+		console.log('weather test', queryMarsWeatherAPI());
+		console.log('hello', test(temperature)); //function call
+	}, []);
+
+	// let temperature = sol && sol.curr_sol && sol.curr_sol.AT && sol.curr_sol.AT.av
+	// console.log('sol', sol);
+	// console.log('sol.curr_sol', sol.curr_sol);
+	// console.log('sol.curr_sol.AT', sol.curr_sol.AT);
+	// console.log('sol.curr_sol.AT.av', sol.curr_sol.AT.av);
 
 	return (
 		<div>
 
-			<div className="sol">
-				<p>Sol: {marsWeather.data && marsWeather.data.sol_keys[0]}</p>
-			</div>
-			<div className="temp">
-				<p>Temp: {temperature}</p>
+			<div className="weather">
+				<div class="overlay2 overlayFade2">
+					<p>Sol: {marsWeather.data && marsWeather.data.sol_keys[0]}</p>
+					<p>Temp: {temperature}</p>
+				</div>
 			</div>
 
 		</div>

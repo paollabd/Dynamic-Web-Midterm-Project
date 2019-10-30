@@ -1,27 +1,164 @@
-.marsPic{
-	height: 100%;
-	margin-left: 25%;
-	margin-right: auto;
-	width: 50%;
+body{
+	background-color: rgb(40, 40, 40);
 }
 
-.Card{
+.container{
+	display: flex;
+	float: left;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-left: 160px;
+}
+
+.container_item{
 	background-color: rgb(225, 225, 225);
 	border-radius: 8px;
-	height: 100px;
-	margin-right: auto;
-	margin-top: 40%;
-	opacity: 0.6;
-	padding: 10px;
-	position: absolute;
 	font-size: 10pt;
+	height: 100px;
+	margin-left: 20px;
+	margin-top: 560px;
+	opacity: 0.7;
+	padding: 10px;
+	position: relative;
+	text-align: center;
 	width: 100px;
+	z-index: 2;
 }
 
-.infoCard{
+
+.container_item:hover{
+	opacity: 1;
+	transition: all 0.8s ease;
+}
+
+
+.Info{
+	position: relative;
+	display: inline-block;
+}
+
+.marsPic{
+	display: block;
+	height: 700px;
+	width: 700px;
+}
+
+
+.overlay{
+	background-color: white;
+	opacity: 0;
+	position: absolute;
+	transition: all 0.3s ease;
+}
+
+.overlayFade{
+	/*right click on element >> inspect >> click on backgorund-color >> change opacity*/
+	background-color: #282828d9;
+	color: white;
+	height: 100%;
+	left: 0;
+	top: 0;
+	width: 100%;
+}
+
+.overlay p{
+	margin-left: 20px;
+}
+
+.picture{
+	display: inline-block;
+	height: 700px;
+	margin-left: 100px;
+	position: absolute;
+	width: 700px;
+	z-index: 1;
+}
+
+.picture:hover .overlay{
+	opacity: 1;
+}
+
+.text{
+	font-family: "American Typewriter, serif";
+	font-size: 14pt;
+	margin-left: 60px;	
+	margin-top: 60px;
+}
+
+.title{
+	color: white;
+	float: left;
+	font-family: "American Typewriter, serif";
+	font-size: 20pt;
+	margin-left: 20px;
+	float: left;
+	width: 220px;
+}
+
+.title h3{
+	font-size: 12pt;	
+	margin-top: -10px;
+	text-align: justify;
+}
+
+.weather{
+	margin-left: 0px;
+}
+
+@media only screen and (max-width: 600px) {
+	.marsPic{
+		display: block;
+		height: 200px;
+		width: 200px;
+	}
+	.picture{
+		height: 200px;
+		margin-left: 50px;
+		margin-top: 50px;
+		width: 200px;
+	}
+	.text{
+		font-size: 10pt;
+		margin-left: 5px;	
+		margin-top: 5px;
+	}
+	.container{
+		display: flex;
+		float: left;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		margin-left: 10px;
+	}
+
+	.container_item{
+		background-color: rgb(225, 225, 225);
+		border-radius: 8px;
+		font-size: 10pt;
+		height: 100px;
+		margin-left: 10px;
+		margin-top: 20px;
+		opacity: 0.7;
+		padding: 5px;
+		position: relative;
+		text-align: center;
+		width: 100px;
+		z-index: 2;
+	}
+}
+
+/*.infoCard{
 	margin-left: 26%;
+}
+
+.marsPic{
+	position: relative;
+	height: 50%;
+	margin-left: 25%;
+	margin-right: auto;
+	opacity: 1;
+	width: 25%;
 }
 
 .roverCard{
 	margin-left: 37%;
-}
+}*/

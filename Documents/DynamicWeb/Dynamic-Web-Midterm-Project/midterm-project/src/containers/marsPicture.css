@@ -10,7 +10,7 @@ body{
 	margin-left: 100px;
 }
 
-.container .container_item{
+.container_item{
 	background-color: rgb(225, 225, 225);
 	border-radius: 8px;
 	font-size: 10pt;
@@ -25,7 +25,7 @@ body{
 }
 
 
-.container .container_item:hover{
+.container_item:hover{
 	opacity: 1;
 	transition: all 0.8s ease;
 }
@@ -45,17 +45,6 @@ body{
 .moreInfo{
 	opacity: 1;
 	position: absolute;
-	transition: all 0.8s ease;
-}
-
-.moreInfo:hover{
-	opacity: 1;
-	position: absolute;
-	transition: all 0.8s ease;
-}
-
-.container_item_1:hover .moreInfo{
-	opacity: 1;
 }
 
 
@@ -97,6 +86,16 @@ body{
 	margin-top: 60px;
 }
 
+.text a {
+	background-color: white;
+	border-radius: 3px;
+	color: black;
+	font-size: 8pt;
+	font-style: bold;
+	box-shadow: 2px 4px #282828d9;
+	padding: 4px;
+}
+
 .title{
 	color: white;
 	float: left;
@@ -130,7 +129,7 @@ body{
 		width: 200px;
 	}
 	.text{
-		font-size: 7pt;
+		font-size: 5pt;
 		margin-left: 5px;	
 		margin-top: 5px;
 	}
@@ -139,20 +138,23 @@ body{
 		flex-wrap: wrap;
 		float: left;
 		justify-content: space-between;
-		margin-left: 10px;
+		margin-left: 5px;
 	}
 	.container_item{
 		background-color: rgb(225, 225, 225);
 		border-radius: 8px;
 		font-size: 8pt;
 		height: 100px;
-		margin-left: 10px;
-		margin-top: 20px;
+		margin-left: 5px;
+		margin-top: 5px;
 		opacity: 0.7;
 		padding: 5px;
 		position: relative;
 		text-align: center;
 		width: 100px;
 		z-index: 2;
+	}
+	.moreInfo{
+		opacity: 0;
 	}
 }

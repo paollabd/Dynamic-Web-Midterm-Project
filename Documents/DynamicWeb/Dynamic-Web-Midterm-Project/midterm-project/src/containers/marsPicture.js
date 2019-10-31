@@ -94,10 +94,11 @@ export default function Pic(props) {
 						<p>Landing Date: {marsData.data && marsData.data.photos[0].rover.landing_date}</p>
 						<form>
 							<h3>Day of Picture:</h3>
-							<p>Enter date in yyyy-mm-dd format:</p>
+							<p>To change images, enter date (yyyy-mm-dd)</p>
+							<p>Click the 'set date' button</p>
 							<input onChange={event => setInput(event.target.value)} />
 						</form>
-						<a className={`WeatherNav__Item ${date === {input} ? 'WeatherNav__Item--active' : ''}`} href="/?earth_date=${input}">Set Date</a>
+						<a className={`WeatherNav__Item ${date === {input} ? 'WeatherNav__Item--active' : ''}`} href={`/?date=${input}`}>Set Date</a>
 					</div>
 				</div> 
 			</div> 

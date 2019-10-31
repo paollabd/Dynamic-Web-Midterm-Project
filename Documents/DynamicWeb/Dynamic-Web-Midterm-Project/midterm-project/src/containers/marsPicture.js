@@ -4,10 +4,8 @@ import axios from 'axios';
 const apiKey = 'YlYcIjjzFeGM92bsta2pYAdOu5pyaicg7LngjK3I'; // NASA API key
 
 export default function Pic(props) {
-	const [error, isError] = useState(false);
-	const [errorMessage, setErrorMessage] = useState('');
-
-	const [success, isSuccess] = useState(false);
+	const urlParams = new URLSearchParams(props.location.search);
+	const dateParam = urlParams.get('date') ? urlParams.get('date') : '2019-9-10'; // default Earth date: 2015-6-3
 
 	const [date, setDate] = useState(''); // creating date variable
 	const [marsData, setMarsData] = useState({});
@@ -19,12 +17,6 @@ export default function Pic(props) {
 
 		.then(function(response) {
 			console.log('response', response);
-			if (response.status != 200) {
-				isError(true);
-				setErrorMessage(`${response.status}: ${'Error'}`);
-			} else {
-				isSuccess(true);
-			}
 			setMarsData(response);
 			return response;
 		})
@@ -38,12 +30,6 @@ export default function Pic(props) {
 		axios.get(`https://api.nasa.gov/insight_weather/?api_key=${apiKey}&feedtype=json&ver=1.0`) // API address
 		.then(function(response) {
 			console.log('response', response);
-			if (response.status != 200) {
-				isError(true);
-				setErrorMessage(`${response.status}: ${'Error'}`);
-			} else {
-				isSuccess(true);
-			}
 			setMarsWeather(response);
 			return response;
 		})
@@ -56,15 +42,12 @@ export default function Pic(props) {
     //var temp = marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[0]] && marsWeather.data[322]['AT'].av
     console.log('DATA', marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[0]] && marsWeather.data[marsWeather.data.sol_keys[0]]['AT'].av)
 
-    const minDay = 1;
-    const maxDay = 30;
 	useEffect(() => {
 		console.log('weather test', queryMarsWeatherAPI());
-		const urlParams = new URLSearchParams(props.location.search)
-		const dateParam = urlParams.get('date') ? urlParams.get('date') : '2019'+'-'+'09'+'-'+(minDay + (Math.random() * (maxDay - minDay))); // default Earth date: 2015-6-3
+		
 		setDate(dateParam);
 		console.log('img test', queryMarsImgAPI(dateParam));
-	}, []);
+	}, [dateParam]);
 	
 
 	return (
@@ -86,7 +69,7 @@ export default function Pic(props) {
 			</div>
 			{marsData.data && marsData.data.photos[0] &&
 				<div className="picture">
-					<img className="marsPic" src={marsData.data.photos[0].img_src} />
+					<img className="marsPic" src={marsData.data.photos[0].img_src} alt="from Mars" />
 					<div className="overlay overlayFade">
 						<div className="text">
 							<p>Picture taken on: {marsData.data.photos[0].earth_date}</p>
@@ -119,7 +102,7 @@ export default function Pic(props) {
 					</div>
 				</div>
 			}
-			<div className={`container ${marsData.data && !marsData.data.photos[0] ? 'no-container' : ''}`}>
+			<div className={`container ${marsData.data && !marsData.data.photos[0] ? 'noContainer' : ''}`}>
 				<div className="container_item container_item_1">
 					<p>Sol: {marsWeather.data && marsWeather.data.sol_keys[0]}</p>
 					<p>Temp: {marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[0]] && marsWeather.data[marsWeather.data.sol_keys[0]]['AT'].av} °F</p>

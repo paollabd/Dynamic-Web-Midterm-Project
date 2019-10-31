@@ -29,7 +29,7 @@ body{
 	opacity: 1;
 	transition: all 0.8s ease;
 }
-.no-container {
+.noContainer {
 	display: none;
 }
 
@@ -127,17 +127,17 @@ body{
 @media only screen and (max-width: 600px) {
 	.marsPic{
 		display: block;
-		height: 200px;
-		width: 200px;
+		height: 220px;
+		width: 220px;
 	}
 	.picture{
-		height: 200px;
-		margin-left: 10px;
-		margin-top: 400px;
-		width: 200px;
+		height: 220px;
+		margin-left: 20px;
+		margin-top: 350px;
+		width: 220px;
 	}
 	.text{
-		font-size: 5pt;
+		font-size: 6pt;
 		margin-left: 5px;	
 		margin-top: 5px;
 	}
@@ -166,12 +166,15 @@ body{
 	.moreInfo{
 		opacity: 0;
 	}
+	.noContainer {
+		display: none;
+	}
 	.noImage{
 		margin-left: 50px;
-		margin-top: 120px;
+		margin-top: 20px;
 	}
 	.text a {
-		font-size: 6pt;
+		font-size: 5pt;
 		font-style: bold;
 		box-shadow: 2px 4px #282828d9;
 		padding: 4px;

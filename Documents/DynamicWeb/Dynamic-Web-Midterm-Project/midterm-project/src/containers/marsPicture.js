@@ -53,7 +53,7 @@ export default function Pic(props) {
 		});
 	}	
 
-    var temp = marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[0]] && marsWeather.data[322]['AT'].av
+    //var temp = marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[0]] && marsWeather.data[322]['AT'].av
     console.log('DATA', marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[0]] && marsWeather.data[marsWeather.data.sol_keys[0]]['AT'].av)
 
     const minDay = 1;
@@ -73,9 +73,9 @@ export default function Pic(props) {
 		<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/tex-gyre-adventor" type="text/css"/>
 			<div className="title">
 				<h1>Mars.</h1>
-				<h3>Using NASA's InSight API, I was able to pull daily weather measurements from mars, and 
+				<h3>Using NASA's InSight API, I was able to pull daily weather measurements from Mars, and 
 				using the Mars Rover Photos API, I was able to pull images taken from rovers in mars.
-				To see more information about these rovers, hover over the image.</h3>
+				To see more information about the photo, hover over the image.</h3>
 				<div className="moreInfo">
 					<h4>Sol {marsWeather.data && marsWeather.data.sol_keys[0]}</h4>
 					<h3>Season: {marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[0]] && marsWeather.data[marsWeather.data.sol_keys[0]]['Season']}</h3>
@@ -84,14 +84,31 @@ export default function Pic(props) {
 					<h3>Wind: {marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[0]] && marsWeather.data[marsWeather.data.sol_keys[0]]['HWS'].av} m/s</h3>
 				</div>
 			</div>
-			<div className="picture">
-				<img className="marsPic" src={marsData.data && marsData.data.photos[0].img_src} />
-				<div className="overlay overlayFade">
-					<div className="text">
-						<p>Picture taken on: {marsData.data && marsData.data.photos[0].earth_date}</p>
-						<p>Sol: {marsData.data && marsData.data.photos[0].sol}</p>
-						<p>Rover name: {marsData.data && marsData.data.photos[0].rover.name}</p>
-						<p>Landing Date: {marsData.data && marsData.data.photos[0].rover.landing_date}</p>
+			{marsData.data && marsData.data.photos[0] &&
+				<div className="picture">
+					<img className="marsPic" src={marsData.data.photos[0].img_src} />
+					<div className="overlay overlayFade">
+						<div className="text">
+							<p>Picture taken on: {marsData.data.photos[0].earth_date}</p>
+							<p>Sol: {marsData.data.photos[0].sol}</p>
+							<p>Rover name: {marsData.data.photos[0].rover.name}</p>
+							<p>Landing Date: {marsData.data.photos[0].rover.landing_date}</p>
+							<form>
+								<h3>Day of Picture:</h3>
+								<p>To change images, enter date (yyyy-mm-dd)</p>
+								<p>Click the 'set date' button</p>
+								<input onChange={event => setInput(event.target.value)} />
+							</form>
+							<a className={`WeatherNav__Item ${date === {input} ? 'WeatherNav__Item--active' : ''}`} href={`/?date=${input}`}>Set Date</a>
+						</div>
+					</div>
+				</div> 
+			}
+			{marsData.data && !marsData.data.photos[0] && 
+				<div className="noImage">
+				<div className="text">
+					<h1>Darn!</h1>
+					<p>Date doesn't have image. try again</p>
 						<form>
 							<h3>Day of Picture:</h3>
 							<p>To change images, enter date (yyyy-mm-dd)</p>
@@ -100,9 +117,9 @@ export default function Pic(props) {
 						</form>
 						<a className={`WeatherNav__Item ${date === {input} ? 'WeatherNav__Item--active' : ''}`} href={`/?date=${input}`}>Set Date</a>
 					</div>
-				</div> 
-			</div> 
-			<div className="container">
+				</div>
+			}
+			<div className={`container ${marsData.data && !marsData.data.photos[0] ? 'no-container' : ''}`}>
 				<div className="container_item container_item_1">
 					<p>Sol: {marsWeather.data && marsWeather.data.sol_keys[0]}</p>
 					<p>Temp: {marsWeather.data && marsWeather.data[marsWeather.data.sol_keys[0]] && marsWeather.data[marsWeather.data.sol_keys[0]]['AT'].av} °F</p>

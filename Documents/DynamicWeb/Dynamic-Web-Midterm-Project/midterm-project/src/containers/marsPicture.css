@@ -29,10 +29,12 @@ body{
 	opacity: 1;
 	transition: all 0.8s ease;
 }
-
+.no-container {
+	display: none;
+}
 
 .info{
-	display: inline-block;
+	display: flex;
 	position: relative;
 }
 
@@ -45,6 +47,12 @@ body{
 .moreInfo{
 	opacity: 1;
 	position: absolute;
+}
+
+.noImage{
+	color: white;
+	margin-left: 220px;
+	margin-top: 40px;
 }
 
 
@@ -69,7 +77,7 @@ body{
 .picture{
 	display: inline-block;
 	height: 700px;
-	margin-left: 100px;
+	margin-left: 340px;
 	position: absolute;
 	width: 700px;
 	z-index: 1;
@@ -124,8 +132,8 @@ body{
 	}
 	.picture{
 		height: 200px;
-		margin-left: 50px;
-		margin-top: 50px;
+		margin-left: 10px;
+		margin-top: 400px;
 		width: 200px;
 	}
 	.text{
@@ -135,10 +143,11 @@ body{
 	}
 	.container{
 		display: flex;
+		flex-direction: column;
 		flex-wrap: wrap;
 		float: left;
 		justify-content: space-between;
-		margin-left: 5px;
+		margin-top: 120px;
 	}
 	.container_item{
 		background-color: rgb(225, 225, 225);
@@ -156,5 +165,15 @@ body{
 	}
 	.moreInfo{
 		opacity: 0;
+	}
+	.noImage{
+		margin-left: 50px;
+		margin-top: 120px;
+	}
+	.text a {
+		font-size: 6pt;
+		font-style: bold;
+		box-shadow: 2px 4px #282828d9;
+		padding: 4px;
 	}
 }
